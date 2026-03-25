@@ -1,0 +1,351 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="slider_review_slider_new_custom section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }};color:{{ section.settings.color | default:'#000' }};">
+   <div class="container_hk section-{{ section.id }}-padding isolate">
+  
+      {% if section.settings.heading != blank %}
+       <div class="two_layers_top center review_top">
+       {% if section.settings.rating != blank %}
+      <div class="two_layers_rating desktop_only">
+         <a href="#reviews"><svg xmlns="http://www.w3.org/2000/svg" width="106" height="21" viewBox="0 0 106 21" fill="none">
+  <path d="M10.0013 0.592102L12.4879 7.17079L19.513 7.50281L14.0247 11.9007L15.8799 18.6846L10.0013 14.8239L4.12267 18.6846L5.97779 11.9007L0.489497 7.50281L7.51462 7.17079L10.0013 0.592102Z" fill="#22D488"/>
+  <path d="M31.2624 0.592102L33.749 7.17079L40.7741 7.50281L35.2859 11.9007L37.141 18.6846L31.2624 14.8239L25.3838 18.6846L27.2389 11.9007L21.7506 7.50281L28.7757 7.17079L31.2624 0.592102Z" fill="#22D488"/>
+  <path d="M52.5235 0.592102L55.0101 7.17079L62.0353 7.50281L56.547 11.9007L58.4021 18.6846L52.5235 14.8239L46.6449 18.6846L48.5 11.9007L43.0117 7.50281L50.0368 7.17079L52.5235 0.592102Z" fill="#22D488"/>
+  <path d="M73.7846 0.592102L76.2712 7.17079L83.2964 7.50281L77.8081 11.9007L79.6632 18.6846L73.7846 14.8239L67.906 18.6846L69.7611 11.9007L64.2728 7.50281L71.2979 7.17079L73.7846 0.592102Z" fill="#22D488"/>
+  <path d="M95.0457 0.592102L97.5323 7.17079L104.557 7.50281L99.0692 11.9007L100.924 18.6846L95.0457 14.8239L89.1671 18.6846L91.0222 11.9007L85.5339 7.50281L92.5591 7.17079L95.0457 0.592102Z" fill="#22D488"/>
+</svg><span>{{ section.settings.rating }}</span></a></div>
+       {% endif %}
+       {% if section.settings.rating_mobile != blank %}
+      <div class="two_layers_rating mobile_only">
+         <a href="#reviews"><svg xmlns="http://www.w3.org/2000/svg" width="106" height="21" viewBox="0 0 106 21" fill="none">
+  <path d="M10.0013 0.592102L12.4879 7.17079L19.513 7.50281L14.0247 11.9007L15.8799 18.6846L10.0013 14.8239L4.12267 18.6846L5.97779 11.9007L0.489497 7.50281L7.51462 7.17079L10.0013 0.592102Z" fill="#22D488"/>
+  <path d="M31.2624 0.592102L33.749 7.17079L40.7741 7.50281L35.2859 11.9007L37.141 18.6846L31.2624 14.8239L25.3838 18.6846L27.2389 11.9007L21.7506 7.50281L28.7757 7.17079L31.2624 0.592102Z" fill="#22D488"/>
+  <path d="M52.5235 0.592102L55.0101 7.17079L62.0353 7.50281L56.547 11.9007L58.4021 18.6846L52.5235 14.8239L46.6449 18.6846L48.5 11.9007L43.0117 7.50281L50.0368 7.17079L52.5235 0.592102Z" fill="#22D488"/>
+  <path d="M73.7846 0.592102L76.2712 7.17079L83.2964 7.50281L77.8081 11.9007L79.6632 18.6846L73.7846 14.8239L67.906 18.6846L69.7611 11.9007L64.2728 7.50281L71.2979 7.17079L73.7846 0.592102Z" fill="#22D488"/>
+  <path d="M95.0457 0.592102L97.5323 7.17079L104.557 7.50281L99.0692 11.9007L100.924 18.6846L95.0457 14.8239L89.1671 18.6846L91.0222 11.9007L85.5339 7.50281L92.5591 7.17079L95.0457 0.592102Z" fill="#22D488"/>
+</svg><span>{{ section.settings.rating_mobile }}</span></a></div>
+       {% endif %}
+       {% if section.settings.heading != blank %}
+      <h2 class="rich-text__heading  inline-richtext h1 two_layers_heading">{{ section.settings.heading }}</h2>
+       {% endif %}
+       {% if section.settings.subheading != blank %}
+      <div class="two_layers_subheading">{{ section.settings.subheading }}</div>
+       {% endif %}
+     </div>
+       {% endif %}
+     <div class="reviews_center_slider_new">
+       <div class="review_slider_main_slider_new slider_{{ section.id }} custom_slick_slider same_height_slider mobile_auto_height_slider">
+        {%- for block in section.blocks -%}
+       <div class="review_slider_custom_slider_new_item">
+       <div class="review_slider_custom_slider_new_item_inner">
+       <div class="review_slider_custom_slider_new_item_bg left">
+       <div class="review_slider_custom_slider_top">
+       
+          {% if block.settings.image != blank %}
+            <div class="review_image_slider_new">
+            <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image.alt }}">  
+            </div>
+            {% endif %}
+    {% if block.settings.title != blank %}
+            <div class="review_title_slider_new">{{ block.settings.title }}</div>
+            {% endif %}
+          {% if block.settings.text != blank %}
+            <div class="review_text_slider_new">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+          
+       <div class="review_slider_custom_slider_bottom">
+         {% if block.settings.rating != blank %}
+            <div class="review_rating_slider_new"><svg xmlns="http://www.w3.org/2000/svg" width="90" height="17" viewBox="0 0 90 17" fill="none">
+  <path d="M7.75862 0.827637L9.68767 5.93115L15.1375 6.18871L10.8799 9.60042L12.319 14.8631L7.75862 11.8682L3.19822 14.8631L4.63735 9.60042L0.379734 6.18871L5.82957 5.93115L7.75862 0.827637Z" fill="#22D488"/>
+  <path d="M26.3795 0.827637L28.3085 5.93115L33.7584 6.18871L29.5007 9.60042L30.9399 14.8631L26.3795 11.8682L21.8191 14.8631L23.2582 9.60042L19.0006 6.18871L24.4504 5.93115L26.3795 0.827637Z" fill="#22D488"/>
+  <path d="M45.0001 0.827637L46.9291 5.93115L52.379 6.18871L48.1213 9.60042L49.5605 14.8631L45.0001 11.8682L40.4397 14.8631L41.8788 9.60042L37.6212 6.18871L43.071 5.93115L45.0001 0.827637Z" fill="#22D488"/>
+  <path d="M63.6207 0.827637L65.5497 5.93115L70.9996 6.18871L66.742 9.60042L68.1811 14.8631L63.6207 11.8682L59.0603 14.8631L60.4994 9.60042L56.2418 6.18871L61.6916 5.93115L63.6207 0.827637Z" fill="#22D488"/>
+  <path d="M82.2413 0.827637L84.1703 5.93115L89.6202 6.18871L85.3626 9.60042L86.8017 14.8631L82.2413 11.8682L77.6809 14.8631L79.12 9.60042L74.8624 6.18871L80.3122 5.93115L82.2413 0.827637Z" fill="#22D488"/>
+</svg> <span>{{ block.settings.rating }}</span></div>
+            {% endif %}
+    <div class="review_name_main">
+          {% if block.settings.name != blank %}
+          <div class="review_name">
+           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+  <path d="M9.10749 0L7.18451 1.23428L5.25892 0L4.20939 2.0314L1.92472 1.92472L2.0314 4.20853L0 5.25892L1.23428 7.18451L0 9.10749L2.0314 10.1579L1.92472 12.4417L4.20853 12.335L5.25806 14.3664L7.18277 13.1321L9.10749 14.3681L10.1579 12.3367L12.4417 12.4434L12.3359 10.1596L14.3681 9.10749L13.1347 7.18451L14.369 5.25979L12.3376 4.21026L12.4434 1.92645L10.1596 2.03227L9.10749 0Z" fill="#22D488"/>
+  <path d="M6.0266 9.59864L3.89632 7.47009C3.83498 7.40862 3.80054 7.32533 3.80054 7.2385C3.80054 7.15166 3.83498 7.06837 3.89632 7.00691L4.3595 6.54372C4.42097 6.48239 4.50426 6.44794 4.59109 6.44794C4.67793 6.44794 4.76121 6.48239 4.82268 6.54372L6.25819 7.97837L9.33219 4.90438C9.39366 4.84304 9.47694 4.80859 9.56378 4.80859C9.65061 4.80859 9.7339 4.84304 9.79537 4.90438L10.2586 5.36756C10.3199 5.42902 10.3543 5.51231 10.3543 5.59915C10.3543 5.68598 10.3199 5.76927 10.2586 5.83074L6.48892 9.59864C6.42749 9.65971 6.34438 9.69399 6.25776 9.69399C6.17114 9.69399 6.08804 9.65971 6.0266 9.59864Z" fill="white"/>
+</svg> <span>{{ block.settings.name }}</span></div>
+            {% endif %}
+    {% if block.settings.time != blank %}
+            <div class="review_time_slider_new">{{ block.settings.time }}</div>
+            {% endif %}
+          </div>
+       </div>
+       </div>
+          </div>
+       </div>
+       {% endfor %}
+       </div>
+
+
+    
+     </div>
+
+
+    
+
+
+    
+     <div class="slider_navigations center{% if section.blocks.size < 4 %} mobile_only{% endif %}">
+  <div class="slider_button_custom prev_{{ section.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
+  <path d="M22.4096 12.2288C22.9542 11.6842 22.9542 10.8012 22.4096 10.2565L13.5341 1.38107C12.9895 0.836432 12.1064 0.836432 11.5618 1.38107C11.0172 1.92571 11.0172 2.80875 11.5618 3.35339L19.4511 11.2427L11.5618 19.132C11.0172 19.6766 11.0172 20.5596 11.5618 21.1043C12.1064 21.6489 12.9895 21.6489 13.5341 21.1043L22.4096 12.2288ZM0.503784 12.6373H21.4234V9.84803H0.503784V12.6373Z" fill="#202A45"/>
+</svg></div>
+       <div class="slider_dots_custom dots_{{ section.id }}"></div>
+  <div class="slider_button_custom next_{{ section.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
+  <path d="M22.4096 12.2288C22.9542 11.6842 22.9542 10.8012 22.4096 10.2565L13.5341 1.38107C12.9895 0.836432 12.1064 0.836432 11.5618 1.38107C11.0172 1.92571 11.0172 2.80875 11.5618 3.35339L19.4511 11.2427L11.5618 19.132C11.0172 19.6766 11.0172 20.5596 11.5618 21.1043C12.1064 21.6489 12.9895 21.6489 13.5341 21.1043L22.4096 12.2288ZM0.503784 12.6373H21.4234V9.84803H0.503784V12.6373Z" fill="#202A45"/>
+</svg></div>
+     </div>
+
+
+
+                {%- if section.settings.button_label != blank -%}
+              <div class="reviews_bottom center">
+                  <a href="{{ section.settings.button_link | default:'#'}}" class="custom_hk_button">{{- section.settings.button_label  -}} </a>
+              </div>
+                {%- endif -%}
+
+     
+   </div>
+  </div>
+
+
+
+<script>
+    $('.slider_{{ section.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+    prevArrow: $('.prev_{{ section.id }}'),
+    nextArrow: $('.next_{{ section.id }}'),
+    appendDots: $('.dots_{{ section.id }}'),
+  cssEase:'linear',
+  responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        speed: 300,
+        slidesToShow:1, 
+adaptiveHeight: true,
+      }
+    }
+  ]
+});
+  
+</script>
+{% schema %}
+  {
+    "name": "reviews Slider",
+    "settings": [
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+     {
+      "type": "color",
+      "id": "color",
+      "label": "Section Text Color"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating",
+      "label": "Rating"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating_mobile",
+      "label": "Rating Mobile"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "SubHeading"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+     {
+      "type": "review",
+      "name": "Review",
+      "settings": [ 
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "name",
+          "label": "Name"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "time",
+          "label": "Time"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "rating",
+          "label": "Rating"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Slider"
+    }
+  ]
+  }
+{% endschema %}
